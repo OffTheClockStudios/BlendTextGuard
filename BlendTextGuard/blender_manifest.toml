@@ -1,0 +1,24 @@
+schema_version = "1.0.0"
+
+id = "blend_text_guard"
+version = "1.0.0"
+name = "BlendTextGuard"
+tagline = "Safely append text blocks from .blend files"
+maintainer = "<offtheclockstudios@outlook.com>"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+tags = [
+  "Text Editor",
+  "Scripting",
+  "Security",
+  "Utilities",
+]
+
+[permissions]
+files = "Allows selecting and reading .blend files to safely import text data only"
