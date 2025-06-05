@@ -15,9 +15,8 @@
     ```  
   - Lists all matches in a consolidated report.
 
-- **Automatic Rename & Conflict Resolution**  
-  - Each imported text block is renamed to `<blend_filename>_<original_text_name>`.  
-  - If a naming conflict arises (i.e. a text block with the same new name already exists), the old block is removed before the new one is renamed.
+- **Automatic Text Naming**  
+  - Each imported text block is renamed to `<blend_filename>_<original_text_name>`.
 
 - **Inline Error Handling**  
   - If a `.blend` file is corrupt or cannot be read, it is “skipped” (with a warning).  
