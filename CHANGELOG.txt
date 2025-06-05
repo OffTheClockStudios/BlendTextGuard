@@ -1,0 +1,8 @@
+BlendTextGuard Changelog
+All notable changes to BlendTextGuard are documented here.
+========================
+
+Version 1.0.0 - 2025-06-05
+--------------------------
+Initial Release
+========================
