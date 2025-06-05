@@ -1,4 +1,4 @@
-**BlendTextGuard** is a Blender add-on that safely imports **only** text blocks from one or more external `.blend` files into your current file—without executing any embedded scripts—and then generates a “flag report” listing any suspicious keywords detected.
+**BlendTextGuard** is a Blender add-on that safely imports **only** text blocks from one or more external `.blend` files into your current file—without executing any embedded scripts—and then generates a “flag report” listing any suspicious keywords detected. Opening Blend files without auto-running Python is always possible, but this tool lets you batch-scan multiple `.blend` files at once. The main benefit is that you bring all texts/scripts into a more controlled environment and scan them in bulk for suspicious terms.
 
 ---
 
