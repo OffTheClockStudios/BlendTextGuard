@@ -35,7 +35,7 @@
 
 2. **Install in Blender**  
    1. Open Blender and go to **Edit → Preferences → Add-ons → Install…**  
-   2. Select the downloaded `BlendTextGuard.zip` (or the single `blend_text_guard.py` file).  
+   2. Select the downloaded `BlendTextGuard.zip`.  
    3. Enable **BlendTextGuard** in the Add-ons list.
 
 > **Note:** Requires **Blender 3.0** or newer.
