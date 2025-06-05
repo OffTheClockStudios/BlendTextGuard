@@ -31,7 +31,7 @@
 ## Installation
 
 1. **Download the BlendTextGuard as a ZIP**  
-   - Click “Code → Download ZIP” on the GitHub repository for the BlendTextGuard folder.
+   - Click the BlendTextGuard.zip on the GitHub repository and click "Download Raw File".
 
 2. **Install in Blender**  
    1. Open Blender and go to **Edit → Preferences → Add-ons → Install…**  
@@ -65,3 +65,18 @@
 
 6. **Verify matches if found**  
    - If any suspicious keywords appear in the report, ensure you trust the publisher before running or using the imported scripts.
+  
+
+## Disclaimer
+
+BlendTextGuard is designed to make it safer and more convenient to pull in text blocks from external `.blend` files—without opening those files directly. However:
+
+- **It does not guarantee 100% safety.**  
+  • BlendTextGuard only scans for a configurable set of keywords and reports any unreadable or corrupt files.  
+  • It does not execute or sandbox the imported code; a user could still manually “Run Script” on any text block.  
+  • Malicious scripts might evade keyword checks (e.g. via obfuscated code or custom handlers), which is why the keyword list remains fully customizable.
+
+- **Use it as part of a broader security workflow.**  
+  • Always review imported code manually before running it.  
+  • Combine BlendTextGuard with your own best practices: version control, regular backups, and code reviews.  
+  • In high-security environments, consider additional measures (trusted repositories, signed scripts, sandboxed builds, etc.).
