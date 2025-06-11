@@ -1,83 +1,124 @@
-**BlendTextGuard** is a Blender add-on that safely imports **only** text blocks from one or more external `.blend` files into your current file—without executing any embedded scripts—and then generates a “flag report” listing any suspicious keywords detected. Opening Blend files without auto-running Python is always possible, but this tool lets you batch-scan multiple `.blend` files at once. The main benefit is that you bring all texts/scripts into a more controlled environment and scan them in bulk for suspicious terms.
+
+# 🛡️ BlendTextGuard – Secure Text Import from `.blend` Files
+---
+---
+
+**BlendTextGuard** is a Blender add-on that safely imports **only** text blocks from one or more external `.blend` files into your current file—**without executing any embedded scripts**—and then generates a “flag report” listing any suspicious keywords detected.
+
+While it's possible to open `.blend` files without auto-running Python, this tool lets you **batch-scan multiple `.blend` files at once**. The benefit is bringing all scripts into a **controlled environment** and scanning them **in bulk** for suspicious terms.
+
+---
+---
+
+## ✨ Features
+
+### ✅ Safe, Text-Only Import  
+- Appends only the `Text` datablocks from each `.blend` in a selected folder.  
+- Does **not** import any objects, materials, handlers, or executable logic.
+
+### 🔍 Case-Insensitive Keyword Scanning  
+- Scans for potentially dangerous terms like:
+  ```
+  subprocess, os.system, urllib, requests, eval, exec, input, __import__, open, compile, bpy.app.handlers
+  ```
+- Matches are shown in a consolidated, readable report.
+
+### 🧾 Automatic Text Naming  
+- Imported text blocks are renamed to:  
+  ```
+  <blend_filename>_<original_text_name>
+  ```
+
+### ⚠️ Inline Error Handling  
+- If a `.blend` file is corrupt or unreadable, it’s **skipped gracefully**.  
+- Skipped files and error messages appear in the final report.
+
+### 📝 In-Blender Flag Report  
+- If any suspicious keywords are found (or files skipped), a new text block is created:
+  ```
+  BlendTextGuard_FlagReport
+  ```
+- A popup alerts you to view the report after the scan.
+
+---
+---
+
+## 🔧 Installation (from GitHub)
+
+**Download BlendTextGuard as a ZIP**  
+ - Visit the GitHub repository and click "Download ZIP" or "Download Raw File". 
+ - Open **Blender → Edit → Preferences → Add-ons → Install…**  
+ - Select the `BlendTextGuard.zip` file.  
+ - Enable the **BlendTextGuard** add-on in the list.
+
+> 💡 **Requires Blender 3.0 or newer.**
 
 ---
 
-## Features
+## 🔧 Installation (from Blender – Pending Inclusion)
 
-- **Safe, Text-Only Import**  
-  - Appends only the `Text` datablocks from every `.blend` in a chosen folder.  
-  - Does **not** import any objects, materials, handlers, or executable logic from source files.
+**Download BlendTextGuard as an Extension**  
+ - Open **Blender → Edit → Preferences → Get Extensions...**  
+ - Search for **BlendTextGuard**  
+ - Click **Install**
 
-- **Case-Insensitive Keyword Scanning**  
-  - By default scans for the following “suspicious” terms:  
-    ```
-    subprocess, os.system, urllib, requests, eval, exec, input, __import__, open, compile, bpy.app.handlers
-    ```  
-  - Lists all matches in a consolidated report.
-
-- **Automatic Text Naming**  
-  - Each imported text block is renamed to `<blend_filename>_<original_text_name>`.
-
-- **Inline Error Handling**  
-  - If a `.blend` file is corrupt or cannot be read, it is “skipped” (with a warning).  
-  - All skipped filenames and their error messages appear in the final report.
-
-- **On-Demand, In-Blender Report**  
-  - Generates a new text datablock named `BlendTextGuard_FlagReport` if any suspicious keywords are found or any `.blend` files were skipped.  
-  - Pops up a brief notification alerting you to open the report.
+> 💡 **Requires Blender 3.0 or newer.**
 
 ---
-
-## Installation
-
-1. **Download the BlendTextGuard as a ZIP**  
-   - Click the BlendTextGuard.zip on the GitHub repository and click "Download Raw File".
-
-2. **Install in Blender**  
-   1. Open Blender and go to **Edit → Preferences → Add-ons → Install…**  
-   2. Select the downloaded `BlendTextGuard.zip`.  
-   3. Enable **BlendTextGuard** in the Add-ons list.
-
-> **Note:** Requires **Blender 3.0** or newer.
-
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-1. **Open a Text Editor area**  
-   - In Blender’s workspace, switch one of the panels to **Text Editor**.
+1. **Open a Text Editor area**: Change one of Blender's panels to the **Text Editor**.
 
-2. **Click “BlendTextGuard Append Folder”**  
-   - In the Text Editor header menu, go to **Text → BlendTextGuard Append Folder**.
+2. **Launch the tool**: Go to **Text → BlendTextGuard Append Folder**.
 
-3. **Navigate to the folder you want to scan/append**  
-   - In the file browser that appears, select the folder containing your `.blend` files.  
-   - Click **Accept** (ensure the folder itself is selected, not a single file).
+3. **Select the folder to scan**: Choose a folder containing one or more `.blend` files. Click **Accept** (select the folder, not a file).
 
-4. **View the report**  
-   - When scanning/appending finishes, **BlendTextGuard_FlagReport** will open automatically.  
-   - If any suspicious keywords were detected or any `.blend` files were skipped, you’ll see details in that report.
+4. **View the generated report**: After import, the report appears in the Text Editor if anything was flagged. It includes skipped files and any suspicious keyword matches.
 
-5. **Adjust the keyword list (optional)**  
-   - Go to **Edit → Preferences → Add-ons**, search for **BlendTextGuard**, and expand its panel.  
-   - Under “Suspicious Keywords,” edit the comma-separated list as needed.  
-   - Click **Restore Default Keywords** to revert to the original set.
+5. **Customize suspicious keywords (optional)**: Go to **Edit → Preferences → Add-ons → BlendTextGuard**. Modify the comma-separated keyword list as needed. Use **"Restore Default Keywords"** to reset.
 
-6. **Verify matches if found**  
-   - If any suspicious keywords appear in the report, ensure you trust the publisher before running or using the imported scripts.
-  
+6. **Manually review any flagged results**: Even if a script is flagged, **it is not run automatically**. Always review text content before clicking **Run Script**.
+
+---
 ---
 
-## Disclaimer
+# Suspicious Keywords (Breakdown)
+ ### 🛠️ System/Execution
+`subprocess, os.system, urllib, requests, eval, exec, input, __import__, open, compile, bpy.app.handlers`
 
-BlendTextGuard is designed to make it safer and more convenient to pull in text blocks from external `.blend` files—without opening those files directly. However:
+📝 _Explanation:_ These functions or modules directly execute or dynamically evaluate code. They’re commonly used in exploits.
 
-- **It does not guarantee 100% safety.**  
-  • BlendTextGuard only scans for a configurable set of keywords and reports any unreadable or corrupt files.  
-  • It does not execute or sandbox the imported code; a user could still manually “Run Script” on any text block.  
-  • Malicious scripts might evade keyword checks (e.g. via obfuscated code or custom handlers), which is why the keyword list remains fully customizable.
+### 🌐 Network/Remote Access
+`urllib, requests, socket, http.client, ftplib`
 
-- **Use it as part of a broader security workflow.**  
-  • Always review imported code manually before running it.  
-  • Combine BlendTextGuard with your own best practices: version control, regular backups, and code reviews.  
-  • In high-security environments, consider additional measures (trusted repositories, signed scripts, sandboxed builds, etc.).
+📝 _Explanation:_ Modules that allow external network communication, which can be used for data exfiltration or remote control.
+
+### 🧪 Obfuscation, Encoding, and Conversion
+`base64, 64, hex, unicode_escape, bytes.fromhex, codecs, marshal, zlib, bz2, gzip, rot13, re`
+    
+📝 _Explanation:_ These are frequently used to disguise malicious payloads or scripts (e.g., encoded payloads decoded at runtime and used in complex obfuscation via regex).
+
+### 🔧 Misc/Advanced
+`inspect, ctypes, getattr, setattr, globals, locals, dict`
+
+📝 _Explanation:_ These identifiers enable deep runtime manipulation or dynamic code behavior and are commonly used in more sophisticated or stealthy attacks.
+
+## ⚠️ Disclaimer
+
+**BlendTextGuard is a scanning tool—not a sandbox or script blocker.**
+
+- It helps reduce risk but **does not guarantee 100% safety**:
+  - Scans for suspicious keywords only (which are customizable).
+  - It does not prevent users from running scripts manually.
+  - Malicious logic might still be obfuscated or cleverly bypass detection.
+
+- Use it as part of a broader pipeline:
+  - Manually inspect any imported code.
+  - Use version control and backups.
+  - Consider signing scripts or using sandboxed workflows in critical projects.
+
+---
+---
+
