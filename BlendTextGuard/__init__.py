@@ -38,6 +38,11 @@ class BlendTextGuardPreferences(bpy.types.AddonPreferences):
         layout = self.layout
         layout.prop(self, "flag_keywords")
         layout.operator("blendtextguard.reset_preferences", icon='RECOVER_LAST')
+        layout.separator()
+        layout.separator()
+        layout.label(text="Resources:")
+        layout.operator("wm.url_open", text="📘 View Documentation").url = "https://github.com/OffTheClockStudios/BlendTextGuard/blob/main/README.md"
+        layout.operator("wm.url_open", text="🛠️ Other Add-ons").url = "https://superhivemarket.com/creators/offtheclockstudiosstore"
 
 
 
@@ -58,7 +63,7 @@ class BLENDTEXTGUARD_OT_ResetPrefs(bpy.types.Operator):
 
 
 # -------------------------------------------------------------------
-# 2) SCANNING + APPENDING HELPERS (updated)
+# 2) SCANNING + APPENDING HELPERS
 # -------------------------------------------------------------------
 def scan_text_for_flags(text_block, flag_keywords):
     """
@@ -132,7 +137,7 @@ def append_texts_from_blend(blend_path, existing_names, flag_keywords, flagged_r
 
 
 # -------------------------------------------------------------------
-# 3) REPORT GENERATION HELPER (updated)
+# 3) REPORT GENERATION HELPER
 # -------------------------------------------------------------------
 def generate_and_show_flag_report(flagged_results, flag_keywords, skipped_files):
     """
@@ -174,6 +179,8 @@ def generate_and_show_flag_report(flagged_results, flag_keywords, skipped_files)
 
     # 3) Promotional line at the end
     report.write("-" * 35 + "\n")
+    report.write("Refer to the documentation for keyword insights:\n")
+    report.write("https://github.com/OffTheClockStudios/BlendTextGuard/blob/main/README.md\n\n")
     report.write("Check out other add-ons from OffTheClockStudios:\n")
     report.write("https://superhivemarket.com/creators/offtheclockstudiosstore\n")
 
@@ -210,11 +217,11 @@ def generate_and_show_flag_report(flagged_results, flag_keywords, skipped_files)
 
 
 # -------------------------------------------------------------------
-# 4) MAIN OPERATOR (tracks skipped_files, unchanged)
+# 4) MAIN OPERATOR
 # -------------------------------------------------------------------
 class BlendTextGuardOpenTextsFromBlendsInFolder(Operator, ImportHelper):
     bl_idname = "text.blend_text_guard_open_texts_from_blend_folder"
-    bl_label = "BlendTextGuard Append Folder"
+    bl_label = "Append Blend Texts"
     bl_description = "Safely import only text blocks from .blend files in a selected folder"
     directory: StringProperty(subtype='DIR_PATH')
 
