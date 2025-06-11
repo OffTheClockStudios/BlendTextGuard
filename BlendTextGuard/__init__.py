@@ -1,7 +1,7 @@
 bl_info = {
     "name": "BlendTextGuard",
     "author": "OffTheClock Studios",
-    "version": (1, 0, 2),
+    "version": (1, 0, 0),
     "blender": (3, 0, 0),
     "location": "Text Editor > Text > BlendTextGuard Append Folder",
     "description": "Safely appends only text blocks from external .blend files into the current file without running any embedded scripts",
