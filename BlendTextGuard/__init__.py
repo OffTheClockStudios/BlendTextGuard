@@ -26,7 +26,11 @@ class BlendTextGuardPreferences(bpy.types.AddonPreferences):
 
     flag_keywords: StringProperty(
         name="Suspicious Keywords",
-        default="subprocess,os.system,urllib,requests,eval,exec,input,__import__,open,compile,bpy.app.handlers",
+        default=(
+            "subprocess,os.system,urllib,requests,eval,exec,input,__import__,open,compile,bpy.app.handlers,"
+            "socket,http.client,ftplib,base64,64,hex,unicode_escape,bytes.fromhex,codecs,marshal,zlib,bz2,"
+            "gzip,rot13,re,inspect,ctypes,getattr,setattr,globals,locals,__dict__"
+        ),
         description="Comma-separated keywords to scan for (case-insensitive)"
     )
 
@@ -34,6 +38,7 @@ class BlendTextGuardPreferences(bpy.types.AddonPreferences):
         layout = self.layout
         layout.prop(self, "flag_keywords")
         layout.operator("blendtextguard.reset_preferences", icon='RECOVER_LAST')
+
 
 
 class BLENDTEXTGUARD_OT_ResetPrefs(bpy.types.Operator):
@@ -44,8 +49,9 @@ class BLENDTEXTGUARD_OT_ResetPrefs(bpy.types.Operator):
     def execute(self, context):
         prefs = context.preferences.addons[__name__].preferences
         prefs.flag_keywords = (
-            "subprocess,os.system,urllib,requests,eval,exec,"
-            "input,__import__,open,compile,bpy.app.handlers"
+            "subprocess,os.system,urllib,requests,eval,exec,input,__import__,open,compile,bpy.app.handlers,"
+            "socket,http.client,ftplib,base64,64,hex,unicode_escape,bytes.fromhex,codecs,marshal,zlib,bz2,"
+            "gzip,rot13,re,inspect,ctypes,getattr,setattr,globals,locals,__dict__"
         )
         self.report({'INFO'}, "BlendTextGuard keywords reset to defaults.")
         return {'FINISHED'}
