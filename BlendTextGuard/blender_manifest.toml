@@ -15,10 +15,8 @@ license = [
 
 tags = [
   "Text Editor",
-  "Scripting",
-  "Security",
-  "Utilities",
+  "Development",
 ]
 
 [permissions]
-files = "Allows selecting and reading .blend files to safely import text data only"
+files = "Reads .blend files and imports text data only"
