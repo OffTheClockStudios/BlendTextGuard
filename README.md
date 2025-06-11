@@ -1,4 +1,3 @@
-
 # 🛡️ BlendTextGuard – Secure Text Import from `.blend` Files
 ---
 ---
@@ -121,4 +120,3 @@ While it's possible to open `.blend` files without auto-running Python, this too
 
 ---
 ---
-
